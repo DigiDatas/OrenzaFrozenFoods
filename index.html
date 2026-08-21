@@ -352,6 +352,18 @@
     letter-spacing:.1em;
     padding:1.6rem var(--edge) 2.2rem;
   }
+/* ================= FULL WIDTH STANDALONE IMAGES ================= */
+  .full-width-media {
+    width: 100%;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .full-width-media img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
 
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
@@ -578,7 +590,45 @@
     text-shadow: 0 2px 12px rgba(240, 230, 213, 0.9), 0 0 2px rgba(240, 230, 213, 1);
     margin: 0;
   }
-/* ================= VERTICAL SECTION ================= */
+
+/* ================= MOBILE OPTIMIZATION ================= */
+  @media (max-width: 820px) {
+    /* 1. Fix the giant vertical sections */
+    .vertical-section {
+      aspect-ratio: 9 / 16;
+      height: 200vh;
+    }
+    
+    /* 2. Fix the interactive text popups so they fit on the screen */
+    .float-text-group.highlighted {
+      left: 5% !important; 
+      top: auto !important;
+      bottom: 5% !important; 
+      width: 90% !important; 
+      transform: none !important;
+    }
+
+    /* 3. NEW: Fix the 16:9 Image Slivers by making them taller (4:5 ratio) on phones */
+    .full-width-media img {
+      aspect-ratio: 4 / 5;
+    }
+
+    /* 4. NEW: Shrink the 3D floating items so they don't crowd the small screen */
+    .floating-track {
+      aspect-ratio: auto;
+      height: 250vh; /* Adjusts the scroll time for mobile */
+    }
+    .float-item {
+      width: 120px; /* Half the size of desktop */
+      margin-left: -60px;
+      margin-top: -60px;
+    }
+
+    /* 5. NEW: Fix the 5 empty new-content-sections from being too tall */
+    .new-content-section.slide {
+      min-height: 40vh; /* Reduces them from 78vh to 40vh if empty */
+    }
+  }/* ================= VERTICAL SECTION ================= */
   .vertical-section {
     position: relative;
     width: 100%;
@@ -779,6 +829,16 @@
     <!-- Any text or content you want to float on top can go here later! -->
   </div>
 </section>
+
+<!-- ============ Vertical Section ============ -->
+<section class="vertical-section">
+  <img src="https://digidatas.github.io/OrenzaFrozenFoods/Designes/Application.jpg" class="bg-image" alt="Vertical Background">
+  <div class="slide-inner">
+    <!-- Any text or content you want to float on top can go here later! -->
+  </div>
+</section>
+
+
 <!-- ============ CLOSING ============ -->
 <section class="slide closing">
   <div class="slide-inner">
